@@ -23,5 +23,4 @@ Route::post('/tavoliPost', 'LoggedController@tavoliPost')->name('tavoliPost');
 Route::post('/controlloTavoli', 'LoggedController@controlloTavoli')->name('controlloTavoli');
 Route::get('/inserisciNomiClienti/data', 'LoggedController@inserisciNomiClienti')->name('inserisciNomiClienti');
 Route::post('/salvaNomiClienti/data', 'LoggedController@salvaNomiClienti')->name('salvaNomiClienti');
-
-// prova
+Route::get('/visualizzaStatistiche', 'LoggedController@visualizzaStatistiche')->name('visualizzaStatistiche');

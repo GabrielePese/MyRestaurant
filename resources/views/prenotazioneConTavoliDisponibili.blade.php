@@ -10,9 +10,9 @@
             <div>
                
                 <ul>
-                    @foreach ($tavoliGiusti as $tavologiusto)
-                    <a href="{{route('inserisciNomiClienti', ['numeroClienti' => $numeroClienti, 'desk_id'=> $tavologiusto -> id])}}">
-                        <li>Il tavolo n.{{$tavologiusto -> id}} e'disponibile ed ha {{$tavologiusto -> slots}} posti.</li>
+                    @foreach ($tavoliLiberi as $tavoliLibero)
+                    <a href="{{route('inserisciNomiClienti', ['numeroClienti' => $numeroClienti, 'ora' => $ora, 'giorno' => $giorno, 'tavololibero' => $tavoliLibero])}}">
+                        <li>Il tavolo n.{{$tavoliLibero ->id}} e'disponibile per la sua prenotazione.</li>
                     </a>
                     @endforeach
                 </ul>

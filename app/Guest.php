@@ -8,6 +8,7 @@ class Guest extends Model
 {
     protected $fillable =[
         
+        'booking_id',
         'firstname',
         'lastname'
     ];
@@ -15,7 +16,7 @@ class Guest extends Model
 
     public function bookings()
     {
-        return $this->belongsToMany(Booking::class);
+        return $this->belongsTo(Booking::class);
     }
 }
 

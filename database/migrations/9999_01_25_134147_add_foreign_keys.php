@@ -13,17 +13,17 @@ class AddForeignKeys extends Migration
      */
     public function up()
     {
-        Schema::table('booking_guest', function(Blueprint $table){
+        // Schema::table('booking_guest', function(Blueprint $table){
             
-            $table -> foreign('guest_id', 'bo_gue')
-                   -> references('id')
-                   ->on('guests');
+        //     $table -> foreign('guest_id', 'bo_gue')
+        //            -> references('id')
+        //            ->on('guests');
 
-            $table -> foreign('booking_id', 'gue_bo')
-                   -> references('id')
-                   ->on('bookings');
+        //     $table -> foreign('booking_id', 'gue_bo')
+        //            -> references('id')
+        //            ->on('bookings');
 
-        });
+        // });
 
         Schema::table('bookings', function(Blueprint $table){
             $table -> foreign('desk_id', 'bo_des')
@@ -39,14 +39,16 @@ class AddForeignKeys extends Migration
      */
     public function down()
     {
-        Schema::table('booking_guest', function(Blueprint $table){
-            $table -> dropForeign('bo_gue');
-            $table -> dropForeign('gue_bo');       
+        // Schema::table('booking_guest', function(Blueprint $table){
+        //     $table -> dropForeign('bo_gue');
+        //     $table -> dropForeign('gue_bo');       
 
-        });
+        // });
 
-        Schema::table('desks', function(Blueprint $table){
+        Schema::table('bookings', function(Blueprint $table){
             $table -> dropForeign('bo_des');
         });
+
+        
     }
 }

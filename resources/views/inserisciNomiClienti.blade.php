@@ -9,7 +9,7 @@
         <div class="col-md-8">
             <div>
                 
-                <form action="{{route('salvaNomiClienti')}}" method="post">
+                <form action="{{route('salvaNomiClienti',['giorno' => $giorno, 'ora' => $ora])}}" method="post">
                     @csrf
                     @method('post')
 
@@ -29,7 +29,7 @@
                         </div>
                         <div style="display: none;">
                             <label for="desk_id">xxx</label>
-                            <input type="text" name="desk_id" value="{{$desk_id}}">
+                            <input type="text" name="desk_id" value="{{$tavololiberoID}}">
                         </div>
 
                     </div>

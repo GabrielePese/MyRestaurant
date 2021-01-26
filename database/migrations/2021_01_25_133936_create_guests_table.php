@@ -16,6 +16,7 @@ class CreateGuestsTable extends Migration
         Schema::create('guests', function (Blueprint $table) {
             $table->id();
             
+            $table->foreignId('booking_id')->constrained();
             $table-> text('firstname');
             $table-> text('lastname');
 

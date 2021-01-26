@@ -19,6 +19,6 @@ class Booking extends Model
 
     public function guests()
     {
-        return $this->belongsToMany(Guest::class);
+        return $this->hasMany(Guest::class);
     }
 }

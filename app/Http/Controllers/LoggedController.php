@@ -138,15 +138,32 @@ class LoggedController extends Controller
     public function visualizzaStatistiche(){
         // Realizzare una pagina all'interno della quale è possibile visualizzare lo storico della prenotazioni suddiviso per giorno
 
+        $now = Carbon::now();
+        $date_now = Carbon::parse($now);
+
+
+        $prenotazioniPerGiorno = DB::table('bookings')
+                     ->select(DB::raw('count(*) as Numero_prenotazioni,date'))
+                     
+                     ->groupBy('date')
+                     ->get();
+
+            //PROBLEMA DIVIDE IL SINGOLO GIORNO ANCHE PER ORA!
+
+        
+        $prenotazioniFuture = DB::table('bookings')
+                ->whereDate('date', '>', $now)  
+                ->get();
+
+                //PROBLEMA SE METTI STESSO GIORNO CON ORARIO FUTURO NON LA PRENDE!!
+
+                // dd($prenotazioniFuture,$date_now,$now);
       
-        $prenotazioniPerGiorno = Guest::groupBy('firstname')
-        ->get();
         
         
+    
 
-        dd($prenotazioniPerGiorno);
 
-
-        return view('visualizzaStatistiche');
+        return view('visualizzaStatistiche', compact('prenotazioniPerGiorno', 'prenotazioniFuture'));
     }
 }

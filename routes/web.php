@@ -24,3 +24,6 @@ Route::post('/controlloTavoli', 'LoggedController@controlloTavoli')->name('contr
 Route::get('/inserisciNomiClienti/data', 'LoggedController@inserisciNomiClienti')->name('inserisciNomiClienti');
 Route::post('/salvaNomiClienti/data', 'LoggedController@salvaNomiClienti')->name('salvaNomiClienti');
 Route::get('/visualizzaStatistiche', 'LoggedController@visualizzaStatistiche')->name('visualizzaStatistiche');
+Route::post('/controlloNomeCognome', 'LoggedController@controlloNomeCognome')->name('controlloNomeCognome');
+
+

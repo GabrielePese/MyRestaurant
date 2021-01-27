@@ -142,12 +142,17 @@ class LoggedController extends Controller
         $date_now = Carbon::parse($now);
 
 
-        $prenotazioniPerGiorno = DB::table('bookings')
-                     ->select(DB::raw('count(*) as Numero_prenotazioni,date'))
-                     
-                     ->groupBy('date')
-                     ->get();
 
+        $prenotazioniPerGiorno = Booking::orderBy('date')
+           ->get()
+          ->groupBy(function ($val) {
+            return Carbon::parse($val-> date)->format('Y-m-d');
+           });
+
+           $array = $prenotazioniPerGiorno ->toArray();
+
+
+           
             //PROBLEMA DIVIDE IL SINGOLO GIORNO ANCHE PER ORA!
 
         
@@ -164,6 +169,24 @@ class LoggedController extends Controller
     
 
 
-        return view('visualizzaStatistiche', compact('prenotazioniPerGiorno', 'prenotazioniFuture'));
+        return view('visualizzaStatistiche', compact('array','prenotazioniPerGiorno','prenotazioniFuture'));
+    }
+
+
+    public function controlloNomeCognome(Request $request){
+        $data = $request ->all();
+        $info = $request -> dato;
+        
+        $risultato = DB::table('bookings')
+        ->join('guests', 'guests.booking_id', '=', 'bookings.id')
+        ->where('firstname', '=',  $info)
+        ->orWhere('lastname',  $info)
+        ->get();
+
+        $result = $risultato -> isEmpty();
+       
+        
+
+        return view ('elencoClientiPerNomeCognome', compact ('risultato','result'));
     }
 }
